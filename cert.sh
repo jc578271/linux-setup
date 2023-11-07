@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 sudo mkdir /home/$USER/ca /home/$USER/certs /home/$USER/csr
 sudo openssl genrsa -des3 -out /home/$USER/ca/InnovateAsterisk-Root-CA.key 4096
 sudo openssl req -x509 -new -nodes -key /home/$USER/ca/InnovateAsterisk-Root-CA.key -sha256 -days 3650 -out /home/$USER/ca/InnovateAsterisk-Root-CA.crt
