@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # Start SSH
 echo "Start SSH..."
 sudo systemctl enable ssh --now
