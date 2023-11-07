@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 LOG_TEMP="log_temp_$(date +%s)"
 BACKUP_TEMP="backup_temp_$(date +%s)"
 
@@ -9,7 +11,7 @@ read -p "Input your backup path (backup): " backup_path
 #Unzip backup folder to backup folder
 echo "Unzip backup..."
 mkdir $BACKUP_TEMP
-sudo tar -xf /$backup_path.tar.gz $BACKUP_TEMP
+sudo tar -xf /$backup_path.tar.gz -C $BACKUP_TEMP
 
 #Find and cat to txt
 mkdir $LOG_TEMP
