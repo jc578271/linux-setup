@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 read -p "Enter your backup name: " backup_name
 sudo rm /$backup_name.tar.gz
