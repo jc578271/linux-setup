@@ -6,7 +6,7 @@ sudo ls /
 read -p "Input your backup path (backup): " backup_path
 
 #Unzip backup folder
-cd / && sudo tar -xf $backup_path.tar.gz
+sudo tar -xf /$backup_path.tar.gz
 
 mkdir $BACKUPTMP_PATH
 
