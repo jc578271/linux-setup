@@ -11,11 +11,11 @@ sudo tar -xf /$backup_path.tar.gz $backup_path/
 mkdir $BACKUPTMP_PATH
 
 #Find and cat to txt
-sudo find $backup_path -type f | awk '{print substr($NF, index($NF, "/")+1)}' >>
-sudo find /usr /etc /lib /var -type f | awk '{print substr($NF, index($NF, "/")>
+sudo find $backup_path -type f | awk '{print substr($NF, index($NF, "/")+1)}' > $BACKUPTMP_PATH/backup_list.txt
+sudo find /usr /etc /lib /var -type f | awk '{print substr($NF, index($NF, "/")+1)}' > $BACKUPTMP_PATH/current_list.txt
 
 # Remove the external packages
-awk 'FNR==NR {a[$0];next}!($0 in a) {print $0}' $BACKUPTMP_PATH/backup_list.txt>
+awk 'FNR==NR {a[$0];next}!($0 in a) {print $0}' $BACKUPTMP_PATH/backup_list.txt $BACKUPTMP_PATH/current_list.txt | awk '{print "sudo rm -rf " $0}' > $BACKUPTMP_PATH/result.sh
 
 echo "Remove external packages..."
 bash $BACKUPTMP_PATH/result.sh
@@ -26,4 +26,3 @@ sudo rm -rf $backup_path
 # Reset system
 echo "Reset system..."
 cd / && sudo tar --recursive-unlink -xf $backup_path.tar.gz
-
