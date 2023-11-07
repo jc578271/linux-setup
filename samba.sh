@@ -6,7 +6,7 @@ sudo systemctl enable ssh --now
 
 echo "Install Samba"
 sudo apt-get update
-sudo apt-get install samba ntp git
+sudo apt-get install samba ntp
 sudo smbpasswd -a $USER
 
 # edit smb.conf
