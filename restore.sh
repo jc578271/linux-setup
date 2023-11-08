@@ -11,7 +11,7 @@ read -p "Input your backup path (backup): " backup_path
 #Unzip backup folder to backup folder
 echo "Unzip backup..."
 mkdir $BACKUP_TEMP
-sudo tar -xf --ignore-failed-read /$backup_path.tar.gz -C $BACKUP_TEMP
+sudo tar -xf --no-wildcards --ignore-failed-read --ignore-command-error /$backup_path.tar.gz -C $BACKUP_TEMP
 
 #Find and cat to txt
 mkdir $LOG_TEMP
