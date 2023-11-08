@@ -8,6 +8,10 @@ BACKUP_TEMP="backup_temp_$(date +%s)"
 sudo ls /
 read -p "Input your backup path (backup): " backup_path
 
+read -p "Do you want to remove external packages (y/n): " isRemovePackages
+
+if [ "$isRemovePackages" = "y" ];
+then
 #Unzip backup folder to backup folder
 echo "Unzip backup..."
 mkdir $BACKUP_TEMP
@@ -26,6 +30,7 @@ bash $LOG_TEMP/result.sh
 
 rm -rf $LOG_TEMP
 sudo rm -rf $BACKUP_TEMP
+fi
 
 # Reset system
 echo "Reset system..."
