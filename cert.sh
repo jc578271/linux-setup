@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-read -p "Enter your passwd: " PASSWD
+# read -p "Enter your passwd: " PASSWD
 read -p "Country (VN): " COUNTRY
 read -p "Province: " PROVINCE
 read -p "City: " CITY
@@ -15,7 +15,7 @@ sudo openssl genrsa -des3 -out /home/$USER/ca/InnovateAsterisk-Root-CA.key 4096
 sudo openssl req -x509 -new -nodes -key /home/$USER/ca/InnovateAsterisk-Root-CA.key -sha256 -days 3650 -out /home/$USER/ca/InnovateAsterisk-Root-CA.crt -subj "/C=${COUNTRY}/ST=${PROVINCE}/L=${CITY}/O=${COMPANY}/OU=${UNIT}/CN=${COMMON}/emailAddress=${EMAIL}"
 sudo openssl req -new -sha256 -nodes -out /home/$USER/csr/raspberrypi.csr -newkey rsa:2048 -keyout /home/$USER/certs/raspberrypi.key -subj "/C=${COUNTRY}/ST=${PROVINCE}/L=${CITY}/O=${COMPANY}/OU=${UNIT}/CN=${COMMON}/emailAddress=${EMAIL}"
 
-read -p "Enter your DNS (raspberry.local): " DNS
+sudo touch /home/$USER/csr/openssl-v3.cnf
 
 sudo tee -a /etc/samba/smb.conf > /dev/null <<EOT
 authorityKeyIdentifier=keyid,issuer
@@ -24,7 +24,7 @@ keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = $DNS
+DNS.1 = $COMMON
 EOT
 # sudo nano /home/$USER/csr/openssl-v3.cnf
 
