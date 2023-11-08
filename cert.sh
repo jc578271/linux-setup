@@ -2,17 +2,18 @@
 set -e
 
 read -p "Enter your passwd: " PASSWD
+read -p "Common Name (raspberry.local): " COMMON
+
 read -p "Country (VN): " COUNTRY
 read -p "Province: " PROVINCE
 read -p "City: " CITY
 read -p "Organization Name: " COMPANY
 read -p "Organizational Unit Name: " UNIT
-read -p "Common Name : " COMMON
 read -p "Email Address: " EMAIL
 
 mkdir /home/$USER/ca /home/$USER/certs /home/$USER/csr
 echo "openssl genrsa InnovateAsterisk-Root-CA"
-sudo openssl genrsa -passout pass:$PASSWD -des3 -out /home/$USER/ca/InnovateAsterisk-Root-CA.key 4096
+sudo openssl genrsa -passin pass:$PASSWD -des3 -out /home/$USER/ca/InnovateAsterisk-Root-CA.key 4096
 
 echo "openssl req InnovateAsterisk-Root-CA"
 sudo openssl req -passin pass:$PASSWD -x509 -new -nodes -key /home/$USER/ca/InnovateAsterisk-Root-CA.key -sha256 -days 3650 -out /home/$USER/ca/InnovateAsterisk-Root-CA.crt -subj "/C=${COUNTRY}/ST=${PROVINCE}/L=${CITY}/O=${COMPANY}/OU=${UNIT}/CN=${COMMON}/emailAddress=${EMAIL}"
