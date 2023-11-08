@@ -29,4 +29,4 @@ sudo rm -rf $BACKUP_TEMP
 
 # Reset system
 echo "Reset system..."
-cd / && sudo tar --recursive-unlink -xf $backup_path.tar.gz
+cd / && sudo tar --ignore-failed-read --recursive-unlink -xf $backup_path.tar.gz
