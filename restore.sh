@@ -34,4 +34,4 @@ fi
 
 # Reset system
 echo "Reset system..."
-cd / && sudo tar --ignore-failed-read --recursive-unlink -xf $backup_path.tar.gz
+cd / && sudo tar --ignore-failed-read --recursive-unlink -xvf $backup_path.tar.gz
