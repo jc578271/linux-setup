@@ -15,7 +15,7 @@ then
 #Unzip backup folder to backup folder
 echo "Unzip backup..."
 mkdir $BACKUP_TEMP
-sudo tar --ignore-failed-read -xf /$backup_path.tar.gz -C $BACKUP_TEMP
+sudo tar --ignore-command-error -xf /$backup_path.tar.gz -C $BACKUP_TEMP
 
 #Find and cat to txt
 mkdir $LOG_TEMP
@@ -34,4 +34,4 @@ fi
 
 # Reset system
 echo "Reset system..."
-cd / && sudo tar --ignore-failed-read --recursive-unlink -xf $backup_path.tar.gz
+cd / && sudo tar --ignore-command-error --recursive-unlink -xf $backup_path.tar.gz
