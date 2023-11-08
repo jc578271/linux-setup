@@ -48,9 +48,9 @@ echo "Continue..."
 fi
 
 echo "Config Asterisk with Browser-Phone..."
-sudo cp /home/$USER/Browser-Phone/config/* /etc/asterisk/
+sudo cp -r /home/$USER/Browser-Phone/config/* /etc/asterisk/
 sudo rm /var/lib/asterisk/static-http/*
-sudo cp /home/$USER/Browser-Phone/Phone/* /var/lib/asterisk/static-http/
+sudo cp -r /home/$USER/Browser-Phone/Phone/* /var/lib/asterisk/static-http/
 sudo chmod 744 /var/lib/asterisk/static-http/*
 
 sudo tee /etc/asterisk/http.conf > /dev/null <<EOT
@@ -65,7 +65,7 @@ sessionlimit=1000
 redirect=/ /static/index.html
 EOT
 
-sudo cp /home/$USER/Browser-Phone/modules/ast-16/codec_opus_arm.so /usr/lib/asterisk/modules
+sudo cp -r /home/$USER/Browser-Phone/modules/ast-16/codec_opus_arm.so /usr/lib/asterisk/modules
 echo "Copy AST_BUILDOPT_SUM:"
 cat /home/$USER/asterisk-20-current/include/asterisk/buildopts.h
 read -p "Input AST_BUILDOPT_SUM:" AST_BUILDOPT_SUM
