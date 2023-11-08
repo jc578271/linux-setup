@@ -10,7 +10,7 @@ read -p "Organizational Unit Name: " UNIT
 read -p "Common Name : " COMMON
 read -p "Email Address: " EMAIL
 
-sudo mkdir /home/$USER/ca /home/$USER/certs /home/$USER/csr
+mkdir /home/$USER/ca /home/$USER/certs /home/$USER/csr
 sudo openssl genrsa -des3 -out /home/$USER/ca/InnovateAsterisk-Root-CA.key 4096
 sudo openssl req -x509 -new -nodes -key /home/$USER/ca/InnovateAsterisk-Root-CA.key -sha256 -days 3650 -out /home/$USER/ca/InnovateAsterisk-Root-CA.crt -subj "/C=${COUNTRY}/ST=${PROVINCE}/L=${CITY}/O=${COMPANY}/OU=${UNIT}/CN=${COMMON}/emailAddress=${EMAIL}"
 sudo openssl req -new -sha256 -nodes -out /home/$USER/csr/raspberrypi.csr -newkey rsa:2048 -keyout /home/$USER/certs/raspberrypi.key -subj "/C=${COUNTRY}/ST=${PROVINCE}/L=${CITY}/O=${COMPANY}/OU=${UNIT}/CN=${COMMON}/emailAddress=${EMAIL}"
