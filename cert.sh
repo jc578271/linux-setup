@@ -23,7 +23,7 @@ sudo openssl req -passin pass:$PASSWD -new -sha256 -nodes -out /home/$USER/csr/r
 
 sudo touch /home/$USER/csr/openssl-v3.cnf
 
-sudo tee -a /etc/samba/smb.conf > /dev/null <<EOT
+sudo tee -a /home/$USER/csr/openssl-v3.cnf > /dev/null <<EOT
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
