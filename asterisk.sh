@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+
 echo $USER
 
 # INSTALL ASTERISK
