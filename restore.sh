@@ -28,7 +28,7 @@ awk 'FNR==NR {a[$0];next}!($0 in a) {print $0}' $LOG_TEMP/backup_list.txt $LOG_T
 echo "Remove external packages..."
 bash $LOG_TEMP/result.sh
 
-rm -rf $LOG_TEMP
+sudo rm -rf $LOG_TEMP
 sudo rm -rf $BACKUP_TEMP
 fi
 
