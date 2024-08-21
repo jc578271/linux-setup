@@ -10,13 +10,13 @@ sudo apt-get install samba ntp
 sudo smbpasswd -a $USER
 
 # edit smb.conf
-if grep -Fxq "[InnovateAsterisk]" /etc/samba/smb.conf
+if grep -Fxq "[share]" /etc/samba/smb.conf
 then
-echo "[InnovateAsterisk] is already added"
+echo "[share] is already added"
 else
-echo "adding [InnovateAsterisk]..."
+echo "adding [share]..."
 sudo tee -a /etc/samba/smb.conf > /dev/null <<EOT
-[InnovateAsterisk]
+[share]
 path = /
 browseable = yes
 writeable = yes
