@@ -6,7 +6,7 @@ LOG_TEMP="log_temp_$(date +%s)"
 BACKUP_TEMP="backup_temp_$(date +%s)"
 
 sudo ls /
-read -p "Input your backup path (backup): " backup_path
+read -p "Input your backup name (backup): " backup_path
 
 read -p "Do you want to remove external packages (y/n): " isRemovePackages
 
