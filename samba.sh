@@ -28,6 +28,6 @@ security = user
 write list = $USER
 force user = root
 EOT
-echo "[InnovateAsterisk] is added"
+echo "[share] is added"
 fi
 sudo service smbd restart
