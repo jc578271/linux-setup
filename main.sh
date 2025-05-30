@@ -10,9 +10,10 @@ while true; do
     echo "4. Install Redis with TLS (redis.sh)"
     echo "5. Install Azurite Storage Emulator (azurite.sh)"
     echo "6. View Let's Encrypt deploy hook"
+    echo "7. User Management (users.sh)"
     echo "===================================="
     echo
-    read -p "Enter your choice [0-6]: " choice
+    read -p "Enter your choice [0-7]: " choice
     
     case $choice in
         0)
@@ -55,6 +56,11 @@ while true; do
                 echo "ERROR: Deploy hook file does not exist at /etc/letsencrypt/renewal/deploy_hook.sh"
                 echo "The file will be created automatically when you run certbot and set up services that use certificates."
             fi
+            read -p "Press Enter to return to menu..."
+            ;;
+        7)
+            echo "Running user management..."
+            bash users.sh
             read -p "Press Enter to return to menu..."
             ;;
         *)
