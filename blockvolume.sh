@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Attach the Block Volume to your instance via the OCI Console.
+# Go [Attach Block Volume] -> [...] -> [iSCSI commands & information]
+# [Linux] -> copy attach -> paste amnd run VPS
+
 # List all disks
 echo "Available disks:"
 lsblk
